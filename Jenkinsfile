@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		label 'linux'
+		label 'Linux'
 	}
 	stages { 	 
 	   stage('Test unitaires') {  
