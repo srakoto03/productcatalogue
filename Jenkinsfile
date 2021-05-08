@@ -26,7 +26,7 @@ pipeline {
           } 	
 	  stage ('Test de performance avec SonaQube'){
 		steps {
-		      withSonarQubeEnv('Test SonarQube Server') {
+		      withSonarQubeEnv('SonarQube') {
 			sh 'mvn clean package sonar:sonar'
 		      }
 		}	
