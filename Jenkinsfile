@@ -23,6 +23,11 @@ pipeline {
                 steps { 
                     sh "wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/productcatalogue/productcatalogue-0.0.1-SNAPSHOT.jar" 
                 } 
-          } 					
+          } 	
+	  steps {
+              withSonarQubeEnv('Test SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }	
 	}
 }
