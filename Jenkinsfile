@@ -15,7 +15,7 @@ pipeline {
 	   } 
 	   stage('Publication du Binaire') {
 		 steps {
-		     sh "curl -u admin:formation-2021 --upload-file target/*.jar 'http://10.10.20.31:8081/repository/productcatalogue/'"  
+		     sh "curl -u admin:formation-2021 --upload-file target/*.jar 'http://10.10.20.31:8081/#browse/browse:productcatalogue'"  
 		 }
 	   
 	   }	
