@@ -37,7 +37,10 @@ pipeline {
          } 
 	 stage ('Création de l\'image Docker'){
 		 steps {
-			 sh ' docker build -t productcatalogue_image . '
+			 sh "docker build . "
+			 sh "docker tag productcatalogue sdocker03/productcatalogue:latest-01"
+			 sh "docker login -u ${env.DOCKERHUB_MDP_USR} -p ${env.DOCKERHUB_MPD_PSW}"
+			 sh "docker push sdocker03/productcatalogue:latest-01"
 		 }
 	 }
      }
