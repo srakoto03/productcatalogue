@@ -39,7 +39,7 @@ pipeline {
 		 steps {
 			 sh " pwd " 
 			 sh " wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/productcatalogue/productcatalogue-0.0.1-SNAPSHOT.jar"
-			 sh ' mv /home/jenkins/tomcat/webapp/productcatalogue-0.0.1-SNAPSHOT.jar ./target/
+			 sh ' mv /home/jenkins/tomcat/webapp/productcatalogue-0.0.1-SNAPSHOT.jar ./target/'
 			 sh " sudo docker build . "
 			 sh " docker tag productcatalogue sdocker03/productcatalogue:latest-01"
 			 sh " docker login -u ${env.DOCKERHUB_MDP_USR} -p ${env.DOCKERHUB_MPD_PSW}"
