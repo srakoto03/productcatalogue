@@ -37,7 +37,7 @@ pipeline {
          } 
 	 stage ('Création de l\'image Docker'){
 		 steps {
-			 sh ' docker build -t productcatalogue . '
+			 sh ' docker build -t productcatalogue_image . '
 		 }
 	 }
      }
