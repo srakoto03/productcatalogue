@@ -17,8 +17,7 @@ pipeline {
 		 steps {
 	            sh "curl -u admin:formation-2021 --upload-file target/productcatalogue-0.0.1-SNAPSHOT.jar 'http://10.10.20.31:8081/repository/productcatalogue/productcatalogue-0.0.1-SNAPSHOT.jar'"  
 		 }	   
-	   }	
-		
+	   }			
 	   stage('Téléchargement du binaire') { 
                 steps { 
                     sh "wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/productcatalogue/productcatalogue-0.0.1-SNAPSHOT.jar" 
@@ -26,8 +25,7 @@ pipeline {
           } 	
 	  stage ('Test de performance avec SonaQube'){
 		steps {
-		      withSonarQubeEnv('SonarQube') {
-			        
+		      withSonarQubeEnv('SonarQube') {			        
 			sh 'mvn clean verify sonar:sonar'
 		      }
 		}	
@@ -36,6 +34,11 @@ pipeline {
                 steps { 
                     sh "curl -u admin:formation-2021 --upload-file /home/jenkins/tomcat/webapps/productcatalogue-0.0.1-SNAPSHOT.jar 'http://{10.10.20.31}:8081/repository/productcatalogue/productcatalogue.jar'" 
                 } 
-         }   
+         } 
+	 stage ('Création de l\'image Docker'){
+		 steps {
+			 sh ' docker build -t productcatalogue . '
+		 }
+	 }
      }
 }
