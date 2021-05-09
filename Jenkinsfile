@@ -40,8 +40,8 @@ pipeline {
 			 sh " pwd " 
 			 sh " wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/productcatalogue/productcatalogue-0.0.1-SNAPSHOT.jar"
 			 sh " mv /home/jenkins/tomcat/webapps/productcatalogue-0.0.1-SNAPSHOT.jar ./target/ "
-			 sh " sudo docker build . "
-			 sh " docker tag productcatalogue sdocker03/productcatalogue:latest-01 "
+			 sh " sudo docker build -t productcatalogue . "
+			 
 			
 		 }
 	 }
